@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Graficas3DPlotyBlazor</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="Graficas3DPlotyBlazor.Client.styles.css" rel="stylesheet" />
+
+    <script src='https://cdn.plot.ly/plotly-2.24.1.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script>
+        window.Graficar = async (valor) => {
+            z1 = [
+
+                [8.83, 8.89, 8.81, 8.87, 8.9, 8.87],
+
+                [8.89, 8.94, 8.85, 8.94, 8.96, 8.92],
+
+                [8.84, 8.9, 8.82, 8.92, 8.93, 8.91],
+
+                [8.79, 8.85, 8.79, 8.9, 8.94, 8.92],
+
+                [8.79, 8.88, 8.81, 8.9, 8.95, 8.92],
+
+                [8.8, 8.82, 8.78, valor, 8.94, 8.92],
+
+                [8.75, 8.78, 8.77, 8.91, 8.95, 8.92],
+
+                [8.8, 8.8, 8.77, 8.91, 8.95, 8.94],
+
+                [8.74, 8.81, 8.76, 8.93, 8.98, 8.99],
+
+                [8.89, 8.99, 8.92, 9.1, 9.13, 9.11],
+
+                [8.97, 8.97, 8.91, 9.09, 9.11, 9.11],
+
+                [9.04, 9.08, 9.05, 9.25, 9.28, 9.27],
+
+                [9, valor, 9, 9.2, 9.23, 9.2],
+
+                [8.99, 8.99, 8.98, 9.18, 9.2, 9.19],
+
+                [8.93, 8.97, 8.97, 9.18, 9.2, 9.18]
+
+            ];
+
+
+            z2 = [];
+
+            for (var i = 0; i < z1.length; i++) {
+
+                z2_row = [];
+
+                for (var j = 0; j < z1[i].length; j++) {
+
+                    z2_row.push(z1[i][j] + 1);
+
+                }
+
+                z2.push(z2_row);
+
+            }
+
+
+            z3 = []
+
+            for (var i = 0; i < z1.length; i++) {
+
+                z3_row = [];
+
+                for (var j = 0; j < z1[i].length; j++) {
+
+                    z3_row.push(z1[i][j] - 1);
+
+                }
+
+                z3.push(z3_row);
+
+            }
+
+            var data_z1 = { z: z1, type: 'surface' };
+
+            var data_z2 = { z: z2, showscale: false, opacity: 0.9, type: 'surface' };
+
+            var data_z3 = { z: z3, showscale: false, opacity: 0.9, type: 'surface' };
+
+
+
+
+            Plotly.newPlot('myDiv', [data_z1, data_z2, data_z3]);
+
+
+
+        }
+
+
+    </script>
+
+
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

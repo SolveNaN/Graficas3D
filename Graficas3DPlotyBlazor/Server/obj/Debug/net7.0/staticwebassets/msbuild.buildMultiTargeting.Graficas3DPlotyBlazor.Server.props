@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Graficas3DPlotyBlazor.Server.props" />
+</Project>

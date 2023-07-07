@@ -1,0 +1,18 @@
+﻿@page "/"
+
+@inject IJSRuntime JS
+
+<button @onclick=Ver>Ver</button>
+<input type="number" @bind-value=valor/>
+<div id='myDiv'></div>
+
+@code {
+    decimal valor = 0;
+    void Ver()
+    {
+
+        JS.InvokeVoidAsync("Graficar", valor);
+
+    }
+}
+
